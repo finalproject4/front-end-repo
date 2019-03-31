@@ -4,6 +4,7 @@ import "./App.css";
 import { getUser, Signout } from "./services/AuthService";
 import SigninForm from "./components/authForm.js/SigninForm";
 import SignupForm from "./components/authForm.js/SignupForm";
+import ToolForm from "./components/ToolForm";
 import ChangePasswordForm from "./components/authForm.js/ChangePasswordForm";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
@@ -58,6 +59,11 @@ class App extends Component {
             <ChangePasswordForm changeActivePage={this.changeActivePage} />
           ) : (
             ""
+          )}
+          {activePage === "Add-Tool" ? (
+            <ToolForm changeActivePage={this.changeActivePage} />
+          ) : (
+              ""
           )}
           {activePage === "profile" ? <Profile /> : ""}
         </div>

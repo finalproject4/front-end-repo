@@ -4,6 +4,9 @@ import { setUser } from "../../services/AuthService";
 class SignupForm extends Component {
   state = {
     formData: {
+      first_name: null,
+      last_name: null,
+      phone_number: null,
       email: null,
       password: null,
       password_confirmation: null
@@ -25,7 +28,8 @@ class SignupForm extends Component {
     })
       .then(res => res.json())
       .then(data => {
-        if (data.error) this.setState({ err: data.error });
+        if (data.status > 299) 
+          this.setState({ err: data.message});
         else {
           setUser(data);
           this.props.onSignin();
@@ -55,6 +59,27 @@ class SignupForm extends Component {
         )}
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
+            <label>First Name </label>
+            <input
+              name="first_name"
+              className="form-control"
+              onChange={this.handleChange}
+            />
+
+            <label>Last Name </label>
+            <input
+              name="last_name"
+              className="form-control"
+              onChange={this.handleChange}
+            />
+
+            <label>Phone Number </label>
+            <input
+              name="phone_number"
+              className="form-control"
+              onChange={this.handleChange}
+            />
+
             <label>email </label>
             <input
               name="email"

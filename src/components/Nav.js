@@ -11,6 +11,13 @@ const authenticatedOptions = (changeActivePage, onSignout) => (
     <li className="nav-item" onClick={() => onSignout()}>
       <div className="nav-link">Sign Out</div>
     </li>
+    <li
+      className="nav-item"
+      onClick={() => changeActivePage("Add-Tool")}
+    >
+      <div className="nav-link">Add Tool</div>
+    </li>
+    
   </React.Fragment>
 );
 
