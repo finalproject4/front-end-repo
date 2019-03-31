@@ -33,6 +33,7 @@ class Home extends Component {
                 <h3>Type </h3> <h4>{tools.type} </h4>
                 <h3>Quantity </h3> <h4>{tools.quantity} </h4>
                 <h3>Price </h3> <h4>{tools.price} </h4>
+              /
               </div>
             );
           });

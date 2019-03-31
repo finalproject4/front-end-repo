@@ -9,11 +9,19 @@ import ChangePasswordForm from "./components/authForm.js/ChangePasswordForm";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
 import MyTools from "./components/myTools";
+import EditToolsForm from "./components/EditToolsForm";
 class App extends Component {
   state = {
     user: null,
-    activePage: "home"
+    activePage: "home",
+    currentTool: null
   };
+
+  changeActiveToEdit = (activePage, id) => {
+      this.setState({ activePage: activePage, currentTool: id });
+    console.log("work")
+
+  }
   componentDidMount() {
     // check if we have a token in the local storage
     const user = getUser();
@@ -66,8 +74,13 @@ class App extends Component {
           ) : (
               ""
           )}
+             {activePage === "Edit-Tool" ? (
+            <EditToolsForm changeActivePage={this.changeActivePage} id={this.state.currentTool}  />
+          ) : (
+              ""
+          )}
           {activePage === "my-tools" ? (
-            <MyTools changeActivePage={this.changeActivePage} />
+            <MyTools changeActivePage={this.changeActivePage} changeActiveToEdit={this.changeActiveToEdit} />
           ) : (
               ""
           )}
