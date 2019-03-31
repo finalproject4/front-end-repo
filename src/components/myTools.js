@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import apiUrl from "../apiConfig";
+import { getUser } from "../services/AuthService";
 
-class Home extends Component {
+class MyTools extends Component {
     state = {
         tools: []
     }
 
     handleLoginRequest = () => {
-        let url = `${apiUrl}/api/tools`;
-    
+        let url = `${apiUrl}/api/user/${getUser().id}/tools`;
+    console.log(getUser().id)
         fetch(url, {
           mode: "cors",
           credentials: "include",
@@ -16,8 +17,8 @@ class Home extends Component {
         })
         .then(response => response.json())
         .then(data => {
-            // console.log(data)
-            this.setState({ tools: data.tools })})
+            console.log(data)
+            this.setState({ tools: data.user.Tools })})
      
           .catch(e => console.log(e));
       };
@@ -45,4 +46,4 @@ class Home extends Component {
 }
 
 
-export default Home;
+export default MyTools;

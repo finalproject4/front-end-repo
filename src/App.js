@@ -8,6 +8,7 @@ import ToolForm from "./components/ToolForm";
 import ChangePasswordForm from "./components/authForm.js/ChangePasswordForm";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
+import MyTools from "./components/myTools";
 class App extends Component {
   state = {
     user: null,
@@ -62,6 +63,11 @@ class App extends Component {
           )}
           {activePage === "Add-Tool" ? (
             <ToolForm changeActivePage={this.changeActivePage} />
+          ) : (
+              ""
+          )}
+          {activePage === "my-tools" ? (
+            <MyTools changeActivePage={this.changeActivePage} />
           ) : (
               ""
           )}
