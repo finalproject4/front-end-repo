@@ -30,13 +30,14 @@ const authenticatedOptions = (changeActivePage, onSignout) => (
     >
       <div className="nav-link">My Reservations</div>
     </li>
-    {/* /* <li
-    <li
-      className="nav-item"
-      onClick={() => changeActivePage("profile")}
-    >
+    {  
+      
+      <li className="nav-item" onClick={() => changeActivePage("profile")} >
       <div className="nav-link">Profile</div>
     </li>
+    
+    /* /* <li
+ 
 
     {/* <li
       className="nav-item"

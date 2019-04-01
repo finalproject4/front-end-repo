@@ -36,6 +36,8 @@ handleLoginRequest = user => {
   }
 render() {
 return (
+  
+
     <div> 
       <h1>Hello</h1>
       <h3>First Name </h3> 
@@ -49,5 +51,6 @@ return (
       <button onClick={() => this.props.changeActiveToEditP("Edit-profile", this.state.my_profile.id)} className="btn btn-primary mr-3">Edit</button>
 
     </div> 
-)}};
+)}
+}
 export default Profile;

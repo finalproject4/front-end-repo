@@ -98,8 +98,7 @@ class App extends Component {
               ""
           )}
             
-          {activePage === "profile" ? <Profile /> : ""}
-            )}
+          
           {activePage === "profile" ? (
           <Profile changeActivePage={this.changeActivePage} changeActiveToEditP={this.changeActiveToEditP} />
            ) :( 
