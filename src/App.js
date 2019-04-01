@@ -13,17 +13,25 @@ import MyRes from "./components/myres";
 import EditToolsForm from "./components/EditToolsForm";
 import EditProfileForm from "./components/EditProfileForm";
 import './App.css';
+import MyHalls from "./components/myHalls";
+import HallForm from "./components/HallForm";
+import EditHallsForm from "./components/EditHallsForm";
 
 class App extends Component {
   state = {
     user: null,
     activePage: "home",
     currentTool: null,
+    currentHall: null,
     currentUser: null
   };
 
   changeActiveToEdit = (activePage, id) => {
     this.setState({ activePage: activePage, currentTool: id });
+
+  }
+  changeActiveToEditH = (activePage, id) => {
+    this.setState({ activePage: activePage, currentHall: id });
 
   }
   changeActiveToEditP = (activePage, id) => {
@@ -82,6 +90,11 @@ class App extends Component {
           ) : (
               ""
             )}
+          {activePage === "add-Hall" ? (
+            <HallForm changeActivePage={this.changeActivePage} />
+          ) : (
+              ""
+            )}
           {activePage === "Edit-Tool" ? (
             <EditToolsForm changeActivePage={this.changeActivePage} id={this.state.currentTool} />
           ) : (
@@ -89,6 +102,16 @@ class App extends Component {
             )}
           {activePage === "my-tools" ? (
             <MyTools changeActivePage={this.changeActivePage} changeActiveToEdit={this.changeActiveToEdit} />
+          ) : (
+              ""
+          )}
+          {activePage === "my-halls" ? (
+            <MyHalls changeActivePage={this.changeActivePage} changeActiveToEditH={this.changeActiveToEditH} />
+          ) : (
+              ""
+          )}
+          {activePage === "Edit-Hall" ? (
+            <EditHallsForm changeActivePage={this.changeActivePage} id={this.state.currentHall} changeActiveToEditH={this.changeActiveToEditH} />
           ) : (
               ""
           )}

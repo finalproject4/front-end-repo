@@ -6,7 +6,8 @@ class Home extends Component {
   state = {
     tools: [],
     res: "btn btn-primary",
-    activeToolId: []
+    activeToolId: [],
+    halls: []
   }
 
   updateButton = (id) => {
@@ -37,9 +38,29 @@ class Home extends Component {
 
       .catch(e => console.log(e));
   };
+  handleHallsRequest = () => {
+    let url = `${apiUrl}/api/halls`;
+
+    fetch(url, {
+      mode: "cors",
+      credentials: "include",
+      method: "GET",
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data, "halls")
+        this.setState({ halls: data.halls })
+      })
+
+      .catch(e => console.log(e));
+  };
 
   componentDidMount() {
-    this.handleLoginRequest();
+     this.handleLoginRequest();
+  }
+  componentWillMount(){
+    this.handleHallsRequest();
+
   }
 
   handleReserveRequest = (toolID) => {
@@ -66,21 +87,30 @@ class Home extends Component {
         .catch(e => console.log(e));
     // this.updateButton()
     };
-  //   handleSubmit = e => {
-  //     e.preventDefault();
-  //     this.handleLoginRequest(this.state.formData);
+  handleReserveHRequest = (hallID) => {
+    console.log("hall = " ,hallID )
+
     
-  //   // this.props.changeActivePage('my-res');
-  // }
+      let url = `${apiUrl}/api/user/${getUser().id}/hall/${hallID}`;
+      console.log(getUser().id);
+
+      console.log(url);
+      fetch(url, {
+        method: "POST",
+        mode: "cors",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json"
+        },
+      })
+        .then(res => res.json())
+
+        .catch(e => console.log(e));
+    };
+
 
   render() {
-    // let likedOrNot = '';
-    // if (this.state.b === true) {
-
-    //   likedOrNot = 'Reserved';
-    // } else {
-    //   likedOrNot = 'Reserve';
-    // }
+   
     const tools = this.state.tools.map(tools => {
       return (
         <div className="card">
@@ -94,10 +124,29 @@ class Home extends Component {
         </div>
       );
     });
+    const halls = this.state.halls.map(halls => {
+      return (
+        <div className="card">
+          <img src="https://cdn2.iconfinder.com/data/icons/bar-and-pub-flaticon/64/music-party-food_and_restaurant-disc-tools-musical-tool-512.png" className="card-img-top" alt="..." />
+          <div className="card-body">
+            <h5 className="card-title">{halls.name}</h5>
+            <p className="card-text">Location: {halls.location}</p>
+            <p className="card-text">Price: {halls.price}</p>
+            <p className="card-text">Type: {halls.type}</p>
+            <p className="card-text">Section: {halls.section}</p>
+            <p className="card-text">Size: {halls.size}</p>
+            <button className="btn btn-primary" onClick={(e) => this.handleReserveHRequest(halls.id)}>Reserve </button>
+          </div>
+        </div>
+      );
+    });
     // () => this.handleReserveRequest(tools.id)
-    return <div className="card-group">{tools}</div>;
-
-
+    return (
+    <div>
+    <div className="card-group">{tools}</div>
+    <div className="card-group">{halls}</div>
+    </div>
+    )
   }
 
 
