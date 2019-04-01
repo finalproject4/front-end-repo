@@ -8,7 +8,7 @@ class MyRes extends Component {
     }
 
     handleResRequest = () => {
-        let url = `${apiUrl}/api/user/${getUser().id}`;
+        let url = `${apiUrl}/api/user/${getUser().id}/res`;
         console.log(getUser().id)
         fetch(url, {
             mode: "cors",

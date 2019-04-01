@@ -1,0 +1,11 @@
+.card{
+width: 18rem;
+} 
+
+body {
+    background: blue;
+}
+.newR{
+  text-decoration: line-through;
+  background-color: brown;
+}

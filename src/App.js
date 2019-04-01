@@ -10,11 +10,21 @@ import Home from "./components/Home";
 import Profile from "./components/Profile";
 import MyTools from "./components/myTools";
 import MyRes from "./components/myres";
+import EditToolsForm from "./components/EditToolsForm";
+import './App.css';
+
 class App extends Component {
   state = {
     user: null,
-    activePage: "home"
+    activePage: "home",
+    currentTool: null
   };
+
+  changeActiveToEdit = (activePage, id) => {
+    this.setState({ activePage: activePage, currentTool: id });
+    console.log("work")
+
+  }
   componentDidMount() {
     // check if we have a token in the local storage
     const user = getUser();
@@ -50,25 +60,30 @@ class App extends Component {
           {activePage === "sign-in" ? (
             <SigninForm onSignin={this.onSignin} />
           ) : (
-            ""
-          )}
+              ""
+            )}
           {activePage === "sign-up" ? (
             <SignupForm onSignin={this.onSignin} />
           ) : (
-            ""
-          )}
+              ""
+            )}
           {activePage === "change-password" ? (
             <ChangePasswordForm changeActivePage={this.changeActivePage} />
           ) : (
-            ""
-          )}
+              ""
+            )}
           {activePage === "Add-Tool" ? (
             <ToolForm changeActivePage={this.changeActivePage} />
           ) : (
               ""
-          )}
+            )}
+          {activePage === "Edit-Tool" ? (
+            <EditToolsForm changeActivePage={this.changeActivePage} id={this.state.currentTool} />
+          ) : (
+              ""
+            )}
           {activePage === "my-tools" ? (
-            <MyTools changeActivePage={this.changeActivePage} />
+            <MyTools changeActivePage={this.changeActivePage} changeActiveToEdit={this.changeActiveToEdit} />
           ) : (
               ""
           )}
@@ -77,6 +92,7 @@ class App extends Component {
           ) : (
               ""
           )}
+            
           {activePage === "profile" ? <Profile /> : ""}
         </div>
       </div>
