@@ -9,6 +9,7 @@ import ChangePasswordForm from "./components/authForm.js/ChangePasswordForm";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
 import MyTools from "./components/myTools";
+import MyRes from "./components/myres";
 class App extends Component {
   state = {
     user: null,
@@ -68,6 +69,11 @@ class App extends Component {
           )}
           {activePage === "my-tools" ? (
             <MyTools changeActivePage={this.changeActivePage} />
+          ) : (
+              ""
+          )}
+          {activePage === "my-res" ? (
+            <MyRes changeActivePage={this.changeActivePage} />
           ) : (
               ""
           )}
