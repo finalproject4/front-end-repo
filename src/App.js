@@ -10,6 +10,8 @@ import Home from "./components/Home";
 import Profile from "./components/Profile";
 import MyTools from "./components/myTools";
 import EditToolsForm from "./components/EditToolsForm";
+import './App.css';
+
 class App extends Component {
   state = {
     user: null,
@@ -18,7 +20,7 @@ class App extends Component {
   };
 
   changeActiveToEdit = (activePage, id) => {
-      this.setState({ activePage: activePage, currentTool: id });
+    this.setState({ activePage: activePage, currentTool: id });
     console.log("work")
 
   }
@@ -57,33 +59,33 @@ class App extends Component {
           {activePage === "sign-in" ? (
             <SigninForm onSignin={this.onSignin} />
           ) : (
-            ""
-          )}
+              ""
+            )}
           {activePage === "sign-up" ? (
             <SignupForm onSignin={this.onSignin} />
           ) : (
-            ""
-          )}
+              ""
+            )}
           {activePage === "change-password" ? (
             <ChangePasswordForm changeActivePage={this.changeActivePage} />
           ) : (
-            ""
-          )}
+              ""
+            )}
           {activePage === "Add-Tool" ? (
             <ToolForm changeActivePage={this.changeActivePage} />
           ) : (
               ""
-          )}
-             {activePage === "Edit-Tool" ? (
-            <EditToolsForm changeActivePage={this.changeActivePage} id={this.state.currentTool}  />
+            )}
+          {activePage === "Edit-Tool" ? (
+            <EditToolsForm changeActivePage={this.changeActivePage} id={this.state.currentTool} />
           ) : (
               ""
-          )}
+            )}
           {activePage === "my-tools" ? (
             <MyTools changeActivePage={this.changeActivePage} changeActiveToEdit={this.changeActiveToEdit} />
           ) : (
               ""
-          )}
+            )}
           {activePage === "profile" ? <Profile /> : ""}
         </div>
       </div>
