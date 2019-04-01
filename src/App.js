@@ -11,18 +11,23 @@ import Profile from "./components/Profile";
 import MyTools from "./components/myTools";
 import MyRes from "./components/myres";
 import EditToolsForm from "./components/EditToolsForm";
+import EditProfileForm from "./components/EditProfileForm";
 import './App.css';
 
 class App extends Component {
   state = {
     user: null,
     activePage: "home",
-    currentTool: null
+    currentTool: null,
+    currentUser: null
   };
 
   changeActiveToEdit = (activePage, id) => {
     this.setState({ activePage: activePage, currentTool: id });
-    console.log("work")
+
+  }
+  changeActiveToEditP = (activePage, id) => {
+    this.setState({ activePage: activePage, currentUser: id });
 
   }
   componentDidMount() {
@@ -94,6 +99,17 @@ class App extends Component {
           )}
             
           {activePage === "profile" ? <Profile /> : ""}
+            )}
+          {activePage === "profile" ? (
+          <Profile changeActivePage={this.changeActivePage} changeActiveToEditP={this.changeActiveToEditP} />
+           ) :( 
+             "" 
+             )}
+               {activePage === "Edit-profile" ? (
+            <EditProfileForm changeActivePage={this.changeActivePage} id={this.state.currentUser} />
+          ) : (
+              ""
+            )}
         </div>
       </div>
     );
