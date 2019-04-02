@@ -13,6 +13,8 @@ import MyRes from "./components/myres";
 import EditToolsForm from "./components/EditToolsForm";
 import EditProfileForm from "./components/EditProfileForm";
 import './App.css';
+import swal from 'sweetalert';
+
 
 class App extends Component {
   state = {
