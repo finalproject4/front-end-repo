@@ -43,7 +43,7 @@ class Home extends Component {
       const user = getUser()
       if (user !== null){
     
-    let url = `${apiUrl}/api/user/${getUser().id}/res`;
+    let url = `${apiUrl}/api/tool/${toolID}`;
 
     fetch(url, {
       mode: "cors",
@@ -55,8 +55,8 @@ class Home extends Component {
       .then(data => {
         console.log(data ,"ddd")
         console.log(this.state.formData.date)
-        console.log(data.user.Reservations[0].date)
-          const input = data.user.Reservations
+        console.log(data.tool.Reservations[0].date)
+          const input = data.tool.Reservations
           const dateArray = input.map(e => {
              return e.date.split('T')[0]
           })
@@ -88,6 +88,7 @@ class Home extends Component {
                 button: "Back",
               });
             }
+         // WHY? 
          this.setState({ reservations: data.tools })
       })
 
@@ -213,7 +214,7 @@ class Home extends Component {
             <p className="card-text">Quantity: {tools.quantity}</p>
             <p className="card-text">Price: {tools.price}</p>
 
-            <form action="/action_page.php">
+            <form>
             date:
             <input type="date" name="date" onChange={this.handleChangeDate}/>
             </form>
