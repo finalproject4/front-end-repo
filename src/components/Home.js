@@ -6,9 +6,9 @@ import swal from 'sweetalert';
 class Home extends Component {
     
   state = {
-      user: null,
     tools: [],
     reservations: [],
+    hreservations: [],
     res: "btn btn-primary",
     activeToolId: [],
     halls: [],
@@ -54,8 +54,8 @@ class Home extends Component {
       
       .then(data => {
         console.log(data ,"ddd")
-        console.log(this.state.formData.date)
-        console.log(data.user.Reservations[0].date)
+        console.log(this.state.formData.date, "8")
+        console.log(data.user.Reservations[0].date, "a")
           const input = data.user.Reservations
           const dateArray = input.map(e => {
              return e.date.split('T')[0]
@@ -89,6 +89,68 @@ class Home extends Component {
               });
             }
          this.setState({ reservations: data.tools })
+      })
+
+      .catch(e => console.log(e));
+    }
+     else {
+        swal({
+            title: "Do you have account ?",
+            text: "Sign Up for free!",
+            icon: "warning",
+            button: "Back",
+          });
+  
+  };
+}
+  getResH = ( hallID ) => {
+      const user = getUser()
+      if (user !== null){
+    
+    let url = `${apiUrl}/api/user/${getUser().id}/hall/${hallID}`;
+
+    fetch(url, {
+      mode: "cors",
+      credentials: "include",
+      method: "GET",
+    })
+      .then(response => response.json())
+      
+      .then(data => {
+      
+          const input = data.user.Hreservations
+          const dateArray = input.map(e => {
+             return e.date.split('T')[0]
+          })
+          console.log(dateArray, "input")
+        //   const dateArray = input.split('T');
+        //   const userMonth = parseInt(dateArray[1])-1;
+          const ourDate = dateArray[0]
+     
+
+          const input1 = this.state.formData.date
+          console.log(input1,"11111")
+          const dateArray1 = input1.split('T');
+        //   const userMonth1 = parseInt(dateArray1[1])-1;
+          const dbDate = dateArray1[0];
+          console.log('dbDate: ', dbDate, ' ourDate: ', ourDate , dateArray[0]);
+        if(!dateArray.includes(dbDate) ){
+            this.handleReserveHRequest(hallID)
+            swal({
+                title: "Reserved! ",
+                text: "",
+                icon: "success",
+                button: "Back",
+              });
+        } else {
+            swal({
+                title: "Oops ! This date has been reserved ",
+                text: "Please, choose another date",
+                icon: "warning",
+                button: "Back",
+              });
+            }
+         this.setState({ hreservations: data.halls })
       })
 
       .catch(e => console.log(e));
@@ -141,9 +203,7 @@ class Home extends Component {
 
   componentDidMount() {
      this.handleLoginRequest();
-  }
-  componentWillMount(){
-    this.handleHallsRequest();
+     this.handleHallsRequest();
 
   }
 
@@ -193,14 +253,6 @@ class Home extends Component {
         .catch(e => console.log(e));
     };
 
-
- 
-   
-    
-   
-    
- 
-
   render() {
      
     
@@ -235,7 +287,11 @@ class Home extends Component {
             <p className="card-text">Type: {halls.type}</p>
             <p className="card-text">Section: {halls.section}</p>
             <p className="card-text">Size: {halls.size}</p>
-            <button className="btn btn-primary" onClick={(e) => this.handleReserveHRequest(halls.id)}>Reserve </button>
+            <form action="/action_page.php">
+            date:
+            <input type="date" name="date" onChange={this.handleChangeDate}/>
+            </form>
+            <button className="btn btn-primary" onClick={(e) => this.getResH(halls.id)}>Reserve </button>
           </div>
         </div>
       );
