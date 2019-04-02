@@ -1,56 +1,135 @@
 import React from "react";
+import apiUrl from "../apiConfig";
+import { getUser } from "../services/AuthService";
+// import {getLingth} from "./"
 
-const authenticatedOptions = (changeActivePage, onSignout) => (
-  <React.Fragment>
-    <li
-      className="nav-item"
-      onClick={() => changeActivePage("change-password")}
-    >
-      <div className="nav-link">Change Password</div>
-    </li>
-    <li className="nav-item" onClick={() => onSignout()}>
-      <div className="nav-link">Sign Out</div>
-    </li>
-    <li
-      className="nav-item"
-      onClick={() => changeActivePage("Add-Tool")}
-    >
-      <div className="nav-link">Add Tool</div>
-    </li>
-    <li
-      className="nav-item"
-      onClick={() => changeActivePage("my-tools")}
-    >
-      <div className="nav-link">My Tools</div>
-    </li>
-    <li
-      className="nav-item"
-      onClick={() => changeActivePage("add-Hall")}
-    >
-      <div className="nav-link">Add Hall</div>
-    </li>
+class AuthenticatedOptions extends React.Component {
+  state = {
+    myTools: []
+  }
+  componentDidMount(){
+    let url = `${apiUrl}/api/user/${getUser().id}/tools`;
+    console.log(getUser().id)
+    fetch(url, {
+      mode: "cors",
+      credentials: "include",
+      method: "GET",
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        this.setState({ myTools: data.user.Tools })
+
+      })
+
+      .catch(e => console.log(e));
+  }
+  render(){
+    return (
+      <React.Fragment>
+      <li
+        className="nav-item"
+        onClick={() => this.props.changeActivePage("change-password")}
+      >
+        <div className="nav-link">Change Password</div>
+      </li>
+      <li className="nav-item" onClick={() => this.props.onSignout()}>
+        <div className="nav-link">Sign Out</div>
+      </li>
+      <li
+        className="nav-item"
+        onClick={() => this.props.changeActivePage("Add-Tool")}
+      >
+        <div className="nav-link">Add Tool</div>
+      </li>
+      <li
+        className="nav-item"
+        onClick={() => this.props.changeActivePage("my-tools")}
+      >
+        <div className="nav-link">My Tools ({this.state.myTools.length})</div>
+        {/* <div className="nav-link">{this.props.changeCart}</div> */}
+      </li>
+      <li
+        className="nav-item"
+        onClick={() => this.props.changeActivePage("add-Hall")}
+      >
+        <div className="nav-link">Add Hall</div>
+      </li>
+    
+      <li
+        className="nav-item"
+        onClick={() => this.props.changeActivePage("my-halls")}
+      >
+        <div className="nav-link">My Halls</div>
+      </li>
+      <li
+        className="nav-item"
+        onClick={() => this.props.changeActivePage("my-res")}
+      >
+        <div className="nav-link">My Reservations</div>
+      </li>
+       
+        
+        <li className="nav-item" onClick={() => this.props.changeActivePage("profile")} >
+        <div className="nav-link">Profile</div>
+      </li>
+      
+    </React.Fragment>
+    )
+  }
+}
+//   const authenticatedOptions = (changeActivePage, onSignout) => (
+//   <React.Fragment>
+//     <li
+//       className="nav-item"
+//       onClick={() => changeActivePage("change-password")}
+//     >
+//       <div className="nav-link">Change Password</div>
+//     </li>
+//     <li className="nav-item" onClick={() => onSignout()}>
+//       <div className="nav-link">Sign Out</div>
+//     </li>
+//     <li
+//       className="nav-item"
+//       onClick={() => changeActivePage("Add-Tool")}
+//     >
+//       <div className="nav-link">Add Tool</div>
+//     </li>
+//     <li
+//       className="nav-item"
+//       onClick={() => changeActivePage("my-tools")}
+//     >
+//       <div className="nav-link">My Tools</div>
+//       {/* <div className="nav-link">{this.props.changeCart}</div> */}
+//     </li>
+//     <li
+//       className="nav-item"
+//       onClick={() => changeActivePage("add-Hall")}
+//     >
+//       <div className="nav-link">Add Hall</div>
+//     </li>
   
-    <li
-      className="nav-item"
-      onClick={() => changeActivePage("my-halls")}
-    >
-      <div className="nav-link">My Halls</div>
-    </li>
-    <li
-      className="nav-item"
-      onClick={() => changeActivePage("my-res")}
-    >
-      <div className="nav-link">My Reservations</div>
-    </li>
+//     <li
+//       className="nav-item"
+//       onClick={() => changeActivePage("my-halls")}
+//     >
+//       <div className="nav-link">My Halls</div>
+//     </li>
+//     <li
+//       className="nav-item"
+//       onClick={() => changeActivePage("my-res")}
+//     >
+//       <div className="nav-link">My Reservations</div>
+//     </li>
      
       
-      <li className="nav-item" onClick={() => changeActivePage("profile")} >
-      <div className="nav-link">Profile</div>
-    </li>
+//       <li className="nav-item" onClick={() => changeActivePage("profile")} >
+//       <div className="nav-link">Profile</div>
+//     </li>
     
-
-  </React.Fragment>
-);
+    
+//   </React.Fragment>
+// );
 
 const unauthenticatedOptions = changeActivePage => (
   <React.Fragment>
@@ -90,7 +169,7 @@ const Nav = ({ user, changeActivePage, onSignout }) => (
         {alwaysOptions(changeActivePage)}
 
         {user
-          ? authenticatedOptions(changeActivePage, onSignout)
+          ? < AuthenticatedOptions changeActivePage={changeActivePage} onSignout={onSignout} />
           : unauthenticatedOptions(changeActivePage)}
         {/* {user && (
           <li className="nav-item">

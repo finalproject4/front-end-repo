@@ -16,6 +16,7 @@ import './App.css';
 import MyHalls from "./components/myHalls";
 import HallForm from "./components/HallForm";
 import EditHallsForm from "./components/EditHallsForm";
+import apiUrl from "./apiConfig";
 
 
 
@@ -26,8 +27,33 @@ class App extends Component {
     activePage: "home",
     currentTool: null,
     currentHall: null,
-    currentUser: null
+    currentUser: null,
+    cart: null,
+    tools: []
   };
+
+  handleLoginRequest = () => {
+    let url = `${apiUrl}/api/user/${getUser().id}/tools`;
+    console.log(getUser().id)
+    fetch(url, {
+      mode: "cors",
+      credentials: "include",
+      method: "GET",
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        this.setState({ tools: data.user.Tools })
+
+      })
+
+      .catch(e => console.log(e));
+  };
+  s = () => {
+    console.log(this.state.tools.length)
+    console.log(this.state.cart, "from the app")
+  }
+  
 
   changeActiveToEdit = (activePage, id) => {
     this.setState({ activePage: activePage, currentTool: id });
@@ -40,6 +66,9 @@ class App extends Component {
   changeActiveToEditP = (activePage, id) => {
     this.setState({ activePage: activePage, currentUser: id });
 
+  }
+  changeCart = (cartId) => {
+    this.setState({cart: cartId})
   }
   componentDidMount() {
     // check if we have a token in the local storage
@@ -61,7 +90,17 @@ class App extends Component {
     this.setState({ user: null });
     Signout();
   };
+
+  componentDidMount() {
+    this.handleLoginRequest();
+   
+  }
+  
   render() {
+    console.log(this.state.tools.length, "API")
+
+    console.log(this.state.cart, "from the app")
+
     const { user, activePage } = this.state;
     return (
       <div>
@@ -69,6 +108,7 @@ class App extends Component {
           user={user}
           changeActivePage={this.changeActivePage}
           onSignout={this.onSignout}
+          mmm={this.state.tools.length}
         />
 
         <div className="container">
@@ -104,7 +144,7 @@ class App extends Component {
               ""
             )}
           {activePage === "my-tools" ? (
-            <MyTools changeActivePage={this.changeActivePage} changeActiveToEdit={this.changeActiveToEdit} />
+            <MyTools changeActivePage={this.changeActivePage} changeActiveToEdit={this.changeActiveToEdit} changeCart={this.changeCart} cartId={this.state.cart}/>
           ) : (
               ""
           )}
@@ -135,7 +175,9 @@ class App extends Component {
           ) : (
               ""
             )}
+            
         </div>
+        <button onClick={this.s}>Click</button>
       </div>
     );
   }

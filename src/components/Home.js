@@ -58,8 +58,6 @@ class Home extends Component {
  console.log(data)
         const input = data.tool.Reservations
         console.log(input, "test")
- 
-          const input = data.tool.Reservations
           console.log(input, "input123")
           const dateArray = input.map(e => {
              return e.date.split('T')[0]
