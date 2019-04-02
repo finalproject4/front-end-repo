@@ -54,9 +54,9 @@ class Home extends Component {
       
       .then(data => {
         console.log(data ,"ddd")
-        console.log(this.state.formData.date)
-        console.log(data.tool.Reservations[0].date)
+console.log(data)
           const input = data.tool.Reservations
+          console.log(input, "test")
           const dateArray = input.map(e => {
              return e.date.split('T')[0]
           })
