@@ -43,7 +43,7 @@ class Home extends Component {
       const user = getUser()
       if (user !== null){
     
-    let url = `${apiUrl}/api/user/${getUser().id}/res`;
+    let url = `${apiUrl}/api/tool/${toolID}`;
 
     fetch(url, {
       mode: "cors",
@@ -54,9 +54,9 @@ class Home extends Component {
       
       .then(data => {
         console.log(data ,"ddd")
-        console.log(this.state.formData.date, "8")
-        console.log(data.user.Reservations[0].date, "a")
-          const input = data.user.Reservations
+       
+          const input = data.tool.Reservations
+          console.log(input, "input123")
           const dateArray = input.map(e => {
              return e.date.split('T')[0]
           })
@@ -88,6 +88,7 @@ class Home extends Component {
                 button: "Back",
               });
             }
+         // WHY? 
          this.setState({ reservations: data.tools })
       })
 
