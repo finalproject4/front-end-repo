@@ -17,6 +17,9 @@ import MyHalls from "./components/myHalls";
 import HallForm from "./components/HallForm";
 import EditHallsForm from "./components/EditHallsForm";
 
+
+
+
 class App extends Component {
   state = {
     user: null,
@@ -90,12 +93,12 @@ class App extends Component {
           ) : (
               ""
             )}
-          {activePage === "add-Hall" ? (
-            <HallForm changeActivePage={this.changeActivePage} />
-          ) : (
-              ""
-            )}
-          {activePage === "Edit-Tool" ? (
+            {activePage === "add-Hall" ? (
+              <HallForm changeActivePage={this.changeActivePage} />
+            ) : (
+                ""
+              )}       
+                 {activePage === "Edit-Tool" ? (
             <EditToolsForm changeActivePage={this.changeActivePage} id={this.state.currentTool} />
           ) : (
               ""

@@ -9,3 +9,7 @@ body {
   text-decoration: line-through;
   background-color: brown;
 }
+
+.hide{
+  display: none;
+}
