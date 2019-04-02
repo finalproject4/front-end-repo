@@ -108,7 +108,7 @@ class Home extends Component {
       const user = getUser()
       if (user !== null){
     
-    let url = `${apiUrl}/api/user/${getUser().id}/hall/${hallID}`;
+    let url = `${apiUrl}/api/hall/${hallID}`;
 
     fetch(url, {
       mode: "cors",
@@ -119,7 +119,7 @@ class Home extends Component {
       
       .then(data => {
       
-          const input = data.user.Hreservations
+          const input = data.hall.Hreservations
           const dateArray = input.map(e => {
              return e.date.split('T')[0]
           })
@@ -134,7 +134,6 @@ class Home extends Component {
           const dateArray1 = input1.split('T');
         //   const userMonth1 = parseInt(dateArray1[1])-1;
           const dbDate = dateArray1[0];
-          console.log('dbDate: ', dbDate, ' ourDate: ', ourDate , dateArray[0]);
         if(!dateArray.includes(dbDate) ){
             this.handleReserveHRequest(hallID)
             swal({
@@ -248,6 +247,8 @@ class Home extends Component {
         headers: {
           "Content-Type": "application/json"
         },
+        body: JSON.stringify(this.state.formData)
+
       })
         .then(res => res.json())
 
