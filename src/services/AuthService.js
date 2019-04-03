@@ -8,6 +8,7 @@ const delete_cookie = function(name) {
 
 export function getUser() {
   const user = localStorage.getItem("user");
+  console.log(user)
   return user === "undefined" ? null : JSON.parse(user);
 }
 

@@ -17,6 +17,7 @@ import MyHalls from "./components/myHalls";
 import HallForm from "./components/HallForm";
 import EditHallsForm from "./components/EditHallsForm";
 import apiUrl from "./apiConfig";
+import Home2 from "./components/Home2";
 
 
 
@@ -76,6 +77,7 @@ class App extends Component {
     if (user) {
       this.setState({ user });
     }
+    this.handleLoginRequest();
   }
 
   changeActivePage = activePage => {
@@ -91,11 +93,6 @@ class App extends Component {
     Signout();
   };
 
-  componentDidMount() {
-    this.handleLoginRequest();
-   
-  }
-  
   render() {
     console.log(this.state.tools.length, "API")
 
@@ -112,7 +109,7 @@ class App extends Component {
         />
 
         <div className="container">
-          {activePage === "home" ? <Home /> : ""}
+          {activePage === "home" ? <Home2 /> : ""}
           {activePage === "sign-in" ? (
             <SigninForm onSignin={this.onSignin} />
           ) : (
