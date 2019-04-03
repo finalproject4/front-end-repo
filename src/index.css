@@ -6,6 +6,7 @@ body {
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background:rgb(214, 211, 211);
   }
   
   code {
@@ -13,6 +14,138 @@ body {
       monospace;
   }
   
-  .newR{
-    text-decoration: line-through;
+.newR{
+    text-decoration: line-through; 
   }
+
+.navbar-expand-lg.navbar-light.bg-light{
+background-color:whitesmoke !important;
+}
+.card-body{
+  background-color: rgb(80, 79, 79);
+   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.card{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+   border-radius: 5px; 
+   -moz-box-shadow:    3px 3px 5px 6px #ccc;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow:         3px 3px 5px 6px #ccc;
+  /* width: 30px !important; */
+
+  /* padding: 10px; */
+
+}
+.btn.btn-primary{
+
+  display: inline-block;
+  padding: 10px 25px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: black;
+  font-weight: bold;
+  background-color: rgb(233, 106, 106);
+  border: none;
+  border-radius: 5px;
+  margin:auto;
+  margin-top: 10px;
+  display:block; 
+}
+.button:hover 
+{background-color:white
+}
+.card-body{
+ font-family: 'Merriweather', serif;
+ font-weight: bold;
+}
+.card-title{
+   font-weight: bold;
+   font-size: 30px;
+   color: rgb(87, 170, 149);
+}
+ .card-text{
+color: white;
+} 
+
+
+/* .form-group{
+/* display: block;
+margin-left: auto;
+margin-right: auto; */
+/* display:block;
+text-align: left;
+} */ 
+.form-group{
+width: 40%;
+height: 40%;
+display: block;
+margin-left: auto;
+margin-right: auto;
+
+}
+
+h1{
+    text-align: center;
+}
+
+h3{
+  text-align: center !important;
+  color: rgb(87, 170, 149);
+}
+
+h4{
+  text-align: center;
+  color: rgb(233, 106, 106);
+}
+label{
+  text-align: right;
+  clear: both;
+  float:left;
+  margin-right:5px;
+}
+.paragraph{
+  padding-top: 50px;
+  text-align: center;
+  color: rgb(87, 170, 149);
+  font-size: 60px;
+ 
+ position:absolute;
+ top:550px;
+ left:355px;
+font-family: 'Lalezar', cursive;
+}
+
+.mySlides{
+     height:400px; 
+    width: 850px; 
+    min-height: 120px;
+    max-height: auto;
+    float: left;
+    margin: 3px;
+    padding: 3px;
+    padding-top: 30px;
+    padding-left: 180px;
+     
+
+}
+/* #c{
+  border: px solid red;
+} */
+
+
+#border{
+  width:667px;
+  height:370px; 
+  box-shadow: 5px 10px 8px 10px #888888 ;
+  position: absolute;
+  left:348px;
+  top:133px;
+  
+}
+span{
+  color:rgb(233, 106, 106);
+  font-size: 70px 
+}

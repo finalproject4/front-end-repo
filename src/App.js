@@ -18,6 +18,8 @@ import HallForm from "./components/HallForm";
 import EditHallsForm from "./components/EditHallsForm";
 import apiUrl from "./apiConfig";
 import Home2 from "./components/Home2";
+import Landing from "./landig";
+
 
 
 
@@ -25,7 +27,7 @@ import Home2 from "./components/Home2";
 class App extends Component {
   state = {
     user: null,
-    activePage: "home",
+    activePage: "Landing",
     currentTool: null,
     currentHall: null,
     currentUser: null,
@@ -68,6 +70,7 @@ class App extends Component {
   onSignout = () => {
     console.log("sigin out");
     this.setState({ user: null });
+    this.changeActivePage("landing");
     Signout();
   };
 
@@ -79,6 +82,8 @@ class App extends Component {
     const { user, activePage } = this.state;
     return (
       <div>
+
+        
         <Nav
           user={user}
           changeActivePage={this.changeActivePage}
@@ -150,7 +155,11 @@ class App extends Component {
           ) : (
               ""
             )}
-            
+          {activePage === "Landing" ? (
+          <Landing changeActivePage={this.changeActivePage}/>
+             ) : (
+           ""
+         )}
         </div>
       </div>
     );

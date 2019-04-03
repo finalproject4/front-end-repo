@@ -3,6 +3,7 @@ import apiUrl from "../apiConfig";
 import { getUser } from "../services/AuthService";
 
 
+
 class MyHalls extends Component {
   state = {
     halls: []
@@ -75,15 +76,15 @@ class MyHalls extends Component {
     const halls = this.state.halls.map(hall => {
       return (
         <div className="card">
-          <img src=".." className="card-img-top" alt="..." />
+          <img src="https://imagesawe.s3.amazonaws.com/listing/2019/01/31/al_faisaliah_hotel_1.jpg" className="card-img-top" alt="..." />
           <div className="card-body">
-            <p className="card-title"> Name: {hall.name}</p>
+            <p className="card-title">{hall.name}</p>
             <p className="card-text">Location: {hall.location}</p>
             <p className="card-text">Price: {hall.price}</p>
             <p className="card-text">Type: {hall.type}</p>
             <p className="card-text">Section: {hall.section}</p>
             <p className="card-text">Size: {hall.size}</p>
-            <button onClick={() => this.props.changeActiveToEditH("Edit-Hall", hall.id)} className="btn btn-primary mr-3">Edit</button>
+            <button onClick={() => this.props.changeActiveToEditH("Edit-Hall", hall.id)} className="btn btn-primary">Edit</button>
             <button onClick={() => this.delete(hall.id)} className="btn btn-primary">Delete</button>
           </div>
         </div>
