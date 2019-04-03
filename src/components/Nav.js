@@ -5,26 +5,96 @@ import { getUser } from "../services/AuthService";
 
 class AuthenticatedOptions extends React.Component {
   state = {
-    myTools: []
+    myTools: [],
+    myHalls: [],
+    myReservations: [],
+    toolsR: [],
+    hallsR: [],
   }
-  componentDidMount(){
-    let url = `${apiUrl}/api/user/${getUser().id}/tools`;
-    console.log(getUser().id)
-    fetch(url, {
-      mode: "cors",
-      credentials: "include",
-      method: "GET",
-    })
+
+  getHalls = () => {
+    let url = `${apiUrl}/api/user/${getUser().id}/halls`;
+      console.log(getUser().id, "test")
+      fetch(url, {
+        mode: "cors",
+        credentials: "include",
+        method: "GET",
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+          this.setState({ myHalls: data.user.Halls })
+        })
+  
+        .catch(e => console.log(e));
+    };
+
+    getTools = () => {
+      let url = `${apiUrl}/api/user/${getUser().id}/tools`;
+      console.log(getUser().id)
+      fetch(url, {
+        mode: "cors",
+        credentials: "include",
+        method: "GET",
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+          this.setState({ myTools: data.user.Tools })
+  
+        })
+  
+        .catch(e => console.log(e));
+  
+        
+    }
+    getReservationsH = () => {
+      let url = `${apiUrl}/api/user/${getUser().id}/hres`;
+
+      fetch(url, {
+          mode: "cors",
+          credentials: "include",
+          method: "GET",
+      })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
-        this.setState({ myTools: data.user.Tools })
-
+      console.log(data, "hallssss")
+      this.setState({ hallsR: data.user.hreservations })
       })
 
       .catch(e => console.log(e));
-  }
+  };
+
+    
+    getReservationsT = () => {
+      let url = `${apiUrl}/api/user/${getUser().id}/res`;
+
+      fetch(url, {
+          mode: "cors",
+          credentials: "include",
+          method: "GET",
+      })
+      .then(response => response.json())
+      .then(data => {
+      console.log(data, "res")
+          this.setState({ toolsR: data.user.reservations })
+      })
+
+      .catch(e => console.log(e));
+  };
+  
+  componentDidMount(){
+    this.getTools();
+    this.getHalls();
+     this.getReservationsT();
+    this.getReservationsH();
+
+}
   render(){
+    const tool = this.state.toolsR.length 
+    const hall = this.state.hallsR.length 
+    const total = tool + hall
+    console.log(this.state.toolsR, "dd")
     return (
       <React.Fragment>
       <li
@@ -60,13 +130,13 @@ class AuthenticatedOptions extends React.Component {
         className="nav-item"
         onClick={() => this.props.changeActivePage("my-halls")}
       >
-        <div className="nav-link">My Halls</div>
+        <div className="nav-link">My Halls ({this.state.myHalls.length})</div>
       </li>
       <li
         className="nav-item"
         onClick={() => this.props.changeActivePage("my-res")}
       >
-        <div className="nav-link">My Reservations</div>
+        <div className="nav-link">My Reservations ({total})</div>
       </li>
        
         

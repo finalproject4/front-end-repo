@@ -71,6 +71,7 @@ class MyHalls extends Component {
   }
 
   render() {
+    console.log(this.state.halls.length)
     const halls = this.state.halls.map(hall => {
       return (
         <div className="card">
