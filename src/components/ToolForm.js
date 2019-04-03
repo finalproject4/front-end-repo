@@ -28,7 +28,8 @@ class ToolForm extends Component {
         })
             .then(res => res.json())
             .then(data => {
-                this.props.changeActivePage("home");
+                // this.props.changeActivePage("home");
+                window.location.reload()
             })
             .catch(e => console.log(e));
     };

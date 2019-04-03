@@ -89,7 +89,6 @@ class MyTools extends Component {
             <p className="card-text">Price: {tool.price}</p>
             <button onClick={() => this.props.changeActiveToEdit("Edit-Tool", tool.id)} className="btn btn-primary mr-3">Edit</button>
             <button onClick={() => this.delete(tool.id)} className="btn btn-primary">Delete</button>
-          <button onClick={this.re}> Click</button>
           </div>
         </div>
       );

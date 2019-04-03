@@ -33,27 +33,6 @@ class App extends Component {
     tools: []
   };
 
-  handleLoginRequest = () => {
-    let url = `${apiUrl}/api/user/${getUser().id}/tools`;
-    console.log(getUser().id)
-    fetch(url, {
-      mode: "cors",
-      credentials: "include",
-      method: "GET",
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data)
-        this.setState({ tools: data.user.Tools })
-
-      })
-
-      .catch(e => console.log(e));
-  };
-  s = () => {
-    console.log(this.state.tools.length)
-    console.log(this.state.cart, "from the app")
-  }
   
 
   changeActiveToEdit = (activePage, id) => {
@@ -77,7 +56,6 @@ class App extends Component {
     if (user) {
       this.setState({ user });
     }
-    this.handleLoginRequest();
   }
 
   changeActivePage = activePage => {
@@ -174,7 +152,6 @@ class App extends Component {
             )}
             
         </div>
-        <button onClick={this.s}>Click</button>
       </div>
     );
   }

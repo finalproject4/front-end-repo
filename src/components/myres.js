@@ -21,7 +21,7 @@ class MyRes extends Component {
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                this.setState({ reservations: data.user.Reservations })
+                this.setState({ reservations: data.user.reservations })
             })
 
             .catch(e => console.log(e));
@@ -68,7 +68,7 @@ class MyRes extends Component {
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                this.setState({ hreservations: data.user.Hreservations })
+                this.setState({ hreservations: data.user.hreservations })
             })
 
             .catch(e => console.log(e));
