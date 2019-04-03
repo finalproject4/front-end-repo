@@ -6,12 +6,29 @@ class EditProfileForm extends Component {
         formData: {
             first_name: null,
             last_name: null,
-            email:null,
-            phone_number:null
+            email: null,
+            phone_number: null
             
         },
         err: null
     };
+    componentDidMount(){
+        let url = `${apiUrl}/api/user/${getUser().id}`;
+            fetch(url, {
+              mode: "cors",
+              credentials: "include",
+              method: "GET",
+              headers: {
+                "Content-type": "application/json"
+              },
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data, "profile")
+                this.setState({formData: data.user})
+            })
+            .catch(e => console.log(e));
+    }
     handleChange = ({ currentTarget }) => {
         const formData = { ...this.state.formData };
         formData[currentTarget.name] = currentTarget.value;
@@ -56,12 +73,14 @@ class EditProfileForm extends Component {
                             name="first_name"
                             className="form-control"
                             type="text"
+                            value={this.state.formData.first_name}
                             onChange={this.handleChange}
                         />
                         <label>Last Name </label>
                         <input
                          name="last_name"
                          type="text"
+                         value={this.state.formData.last_name}
                          className="form-control"
                          onChange={this.handleChange}
                         />
@@ -70,6 +89,7 @@ class EditProfileForm extends Component {
             name="email"
             type="text"
             className="form-control"
+            value={this.state.formData.email}
             onChange={this.handleChange}
         />
         <label>Phone Number </label>
@@ -77,6 +97,7 @@ class EditProfileForm extends Component {
             name="phone_number"
             type="text"
             className="form-control"
+            value={this.state.formData.phone_number}
             onChange={this.handleChange}
         />
     </div>

@@ -11,6 +11,24 @@ class EditToolsForm extends Component {
         },
         err: null
     };
+    componentDidMount(){
+        let url = `${apiUrl}/api/tool/${this.props.id}`;
+    
+          fetch(url, {
+            mode: "cors",
+            credentials: "include",
+            method: "GET",
+            headers: {
+              "Content-type": "application/json"
+            },
+          })
+          .then(response => response.json())
+          .then(data => {
+              this.setState({formData: data.tool})
+          })
+          .catch(e => console.log(e));
+        };
+    
     handleChange = ({ currentTarget }) => {
         const formData = { ...this.state.formData };
         formData[currentTarget.name] = currentTarget.value;
@@ -55,6 +73,7 @@ class EditToolsForm extends Component {
                             name="type"
                             className="form-control"
                             type="text"
+                            value={this.state.formData.type}
                             onChange={this.handleChange}
                         />
                         <label>Quantity </label>
@@ -62,6 +81,7 @@ class EditToolsForm extends Component {
                             name="quantity"
                             type="text"
                             className="form-control"
+                            value={this.state.formData.quantity}
                             onChange={this.handleChange}
                         />
                         <label>Price </label>
@@ -69,6 +89,7 @@ class EditToolsForm extends Component {
                             name="price"
                             type="text"
                             className="form-control"
+                            value={this.state.formData.price}
                             onChange={this.handleChange}
                         />
                     </div>

@@ -13,6 +13,22 @@ class EditHallsForm extends Component {
         },
         err: null
     };
+    componentDidMount(){
+        let url = `${apiUrl}/api/hall/${this.props.id}`;
+            fetch(url, {
+              mode: "cors",
+              credentials: "include",
+              method: "GET",
+              headers: {
+                "Content-type": "application/json"
+              },
+            })
+            .then(response => response.json())
+            .then(data => {
+               this.setState({formData: data.hall}) 
+            })
+            .catch(e => console.log(e));
+    }
     handleChange = ({ currentTarget }) => {
         const formData = { ...this.state.formData };
         formData[currentTarget.name] = currentTarget.value;
@@ -57,6 +73,7 @@ class EditHallsForm extends Component {
                             name="name"
                             className="form-control"
                             type="text"
+                            value={this.state.formData.name}
                             onChange={this.handleChange}
                         />
                         <label>Type</label>
@@ -64,6 +81,7 @@ class EditHallsForm extends Component {
                             name="type"
                             className="form-control"
                             type="text"
+                            value={this.state.formData.type}
                             onChange={this.handleChange}
                         />
                         <label>Location </label>
@@ -71,6 +89,7 @@ class EditHallsForm extends Component {
                             name="location"
                             type="text"
                             className="form-control"
+                            value={this.state.formData.location}
                             onChange={this.handleChange}
                         />
                         <label>Price </label>
@@ -78,6 +97,7 @@ class EditHallsForm extends Component {
                             name="price"
                             type="text"
                             className="form-control"
+                            value={this.state.formData.price}
                             onChange={this.handleChange}
                         />
                         <label>Size </label>
@@ -85,6 +105,7 @@ class EditHallsForm extends Component {
                             name="size"
                             type="text"
                             className="form-control"
+                            value={this.state.formData.size}
                             onChange={this.handleChange}
                         />
                         <label>Section </label>
@@ -92,6 +113,7 @@ class EditHallsForm extends Component {
                             name="section"
                             type="text"
                             className="form-control"
+                            value={this.state.formData.section}
                             onChange={this.handleChange}
                         />
                     </div>
