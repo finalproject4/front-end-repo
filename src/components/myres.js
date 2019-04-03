@@ -11,7 +11,7 @@ class MyRes extends Component {
     }
 
     handleResRequest = () => {
-        let url = `${apiUrl}/api/user/${getUser().id}/res`;
+        let url = `${apiUrl}/api/user/${getUser().id}/resd`;
         console.log(getUser().id)
         fetch(url, {
             mode: "cors",
@@ -20,8 +20,8 @@ class MyRes extends Component {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
-                this.setState({ reservations: data.user.reservations })
+                console.log(data, "details")
+                this.setState({ reservations: data.user })
             })
 
             .catch(e => console.log(e));
@@ -58,7 +58,7 @@ class MyRes extends Component {
     };
 
     handleResHRequest = () => {
-        let url = `${apiUrl}/api/user/${getUser().id}/hres`;
+        let url = `${apiUrl}/api/user/${getUser().id}/hresd`;
         console.log(getUser().id)
         fetch(url, {
             mode: "cors",
@@ -68,7 +68,7 @@ class MyRes extends Component {
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                this.setState({ hreservations: data.user.hreservations })
+                this.setState({ hreservations: data.user })
             })
 
             .catch(e => console.log(e));
@@ -88,7 +88,7 @@ class MyRes extends Component {
                 return <h3>Date: {ree}</h3>
             })
            return <div>
-               <h2>Halls Clients Reservations</h2>
+               
                 <h3>Name: {r.name}</h3>
                 <h3>Type: {r.type}</h3>
                 <h3>Price: {r.price}</h3>
@@ -104,29 +104,39 @@ class MyRes extends Component {
                 return <h3>Date: {ree}</h3>
             })
            return <div>
-               <h2>Clients Reservations</h2>
+               
                 <h3>Type: {r.type}</h3>
                 <h3>Price: {r.price}</h3>
                 {res}
             </div>
         })
         const reservations = this.state.reservations.map(reservations => {
-            const date = reservations.date.split('T')[0]
+            const date = reservations.reservations.map(date => {
+                return <h4>{date.date.split('T')[0]}</h4>
+            })
             return (
-                <div>
-                    <h3>User</h3> <h4>{reservations.user_id} </h4>
-                    <h3>Tool </h3> <h4>{reservations.tool_id} </h4>
-                    <h3>Date </h3> <h4>{date} </h4>
+                <div className="card">
+                    <h2>Tool Client Reservations</h2>
+                    <h3>Type: {reservations.type} </h3>
+                    <h3>Price: {reservations.price} </h3>
+                    <h3>Date: {date}</h3> 
                 </div>
             );
         }); 
         const hreservations = this.state.hreservations.map(hreservations => {
-            const date = hreservations.date.split('T')[0]
+            const date = hreservations.hreservations.map(date => {
+                return <h4>{date.date.split('T')[0]}</h4>
+            })
             return (
-                <div>
-                    <h3>User</h3> <h4>{hreservations.user_id} </h4>
-                    <h3>hall </h3> <h4>{hreservations.hall_id} </h4>
-                    <h3>Date </h3> <h4>{date} </h4>
+                <div className="card">
+                    <h2>Hall Client Reservations</h2>
+                    <h3>Name: {hreservations.name} </h3>
+                    <h3>Price: {hreservations.price} </h3>
+                    <h3>Type: {hreservations.type} </h3>
+                    <h3>Size: {hreservations.size} </h3>
+                    <h3>Location: {hreservations.location} </h3>
+                    <h3>Section: {hreservations.section} </h3>
+                    <h3>Date: {date} </h3>
                 </div>
             );
         }); 

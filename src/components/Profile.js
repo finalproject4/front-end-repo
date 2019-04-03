@@ -39,7 +39,7 @@ return (
   
 
     <div> 
-      <h1>Hello</h1>
+      <h1>Hello {this.state.my_profile.first_name}</h1>
       <h3>First Name </h3> 
       <h4>{this.state.my_profile.first_name} </h4>
       <h3>Last Name </h3> 
