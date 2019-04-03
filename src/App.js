@@ -35,30 +35,6 @@ class App extends Component {
     tools: []
   };
 
-<<<<<<< HEAD
-=======
-  // handleLoginRequest = () => {
-  //   let url = `${apiUrl}/api/user/${getUser().id}/tools`;
-  //   console.log(getUser().id)
-  //   fetch(url, {
-  //     mode: "cors",
-  //     credentials: "include",
-  //     method: "GET",
-  //   })
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       console.log(data)
-  //       this.setState({ tools: data.user.Tools })
-
-  //     })
-
-  //     .catch(e => console.log(e));
-  // };
-  s = () => {
-    console.log(this.state.tools.length)
-    console.log(this.state.cart, "from the app")
-  }
->>>>>>> design
   
 
   changeActiveToEdit = (activePage, id) => {
