@@ -3,6 +3,7 @@ import apiUrl from "../apiConfig";
 import { getUser } from "../services/AuthService";
 
 
+
 class MyHalls extends Component {
   state = {
     halls: []
@@ -75,7 +76,7 @@ class MyHalls extends Component {
     const halls = this.state.halls.map(hall => {
       return (
         <div className="card">
-          <img src=".." className="card-img-top" alt="..." />
+          <img src="IMG_1094.png" className="card-img-top" alt="..." />
           <div className="card-body">
             <p className="card-title"> Name: {hall.name}</p>
             <p className="card-text">Location: {hall.location}</p>

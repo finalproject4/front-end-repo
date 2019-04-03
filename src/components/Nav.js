@@ -1,6 +1,7 @@
 import React from "react";
 import apiUrl from "../apiConfig";
 import { getUser } from "../services/AuthService";
+import image from "./../image/IMG_1094.png";
 // import {getLingth} from "./"
 
 class AuthenticatedOptions extends React.Component {
@@ -96,6 +97,7 @@ class AuthenticatedOptions extends React.Component {
     const total = tool + hall
     console.log(this.state.toolsR, "dd")
     return (
+     
       <React.Fragment>
       <li
         className="nav-item"
@@ -222,7 +224,11 @@ const alwaysOptions = changeActivePage => (
 
 const Nav = ({ user, changeActivePage, onSignout }) => (
   <nav className="navbar navbar-expand-lg navbar-light bg-light">
-    <div className="navbar-brand">Navbar</div>
+
+    <div className="navbar-brand"></div>
+<nav className="navbar navbar-light bg-light">
+    <img src={image} width="180" height="100" className="d inline-block align-top" alt="img"/>
+</nav>
     <button
       className="navbar-toggler"
       type="button"

@@ -22,6 +22,7 @@ import Home2 from "./components/Home2";
 
 
 
+
 class App extends Component {
   state = {
     user: null,
@@ -79,6 +80,8 @@ class App extends Component {
     const { user, activePage } = this.state;
     return (
       <div>
+
+       
         <Nav
           user={user}
           changeActivePage={this.changeActivePage}

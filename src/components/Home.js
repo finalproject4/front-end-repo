@@ -304,7 +304,7 @@ handleReserveHRequest = (hallID) => {
   const halls = this.state.halls.map(halls => {
     return (
       <div className="card">
-        <img src="https://cdn2.iconfinder.com/data/icons/bar-and-pub-flaticon/64/music-party-food_and_restaurant-disc-tools-musical-tool-512.png" className="card-img-top" alt="..." />
+        <img src="https://imagesawe.s3.amazonaws.com/listing/2019/01/31/al_faisaliah_hotel_1.jpg" className="card-img-top" alt="..." />
         <div className="card-body">
           <h5 className="card-title">{halls.name}</h5>
           <p className="card-text">Location: {halls.location}</p>
