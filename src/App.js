@@ -74,14 +74,6 @@ class App extends Component {
     Signout();
   };
 
-<<<<<<< HEAD
-=======
-  componentDidMount() {
-    // this.handleLoginRequest();
-   
-  }
-  
->>>>>>> design
   render() {
     console.log(this.state.tools.length, "API")
 
@@ -169,10 +161,6 @@ class App extends Component {
            ""
          )}
         </div>
-<<<<<<< HEAD
-=======
-     
->>>>>>> design
       </div>
     );
   }
