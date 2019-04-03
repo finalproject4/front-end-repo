@@ -48,7 +48,7 @@ class SigninForm extends Component {
   render() {
     return (
       <div className="pt-5 mt-5">
-        <h1>SIGININ</h1>
+        <h1 className="mb-5" >SIGIN IN</h1>
         {this.state.err ? (
           <div className="alert alert-danger"> {this.state.err} </div>
         ) : (
@@ -69,11 +69,12 @@ class SigninForm extends Component {
               type="password"
               onChange={this.handleChange}
             />
-          </div>
-
-          <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-primary">
             Login
           </button>
+          </div>
+
+          
         </form>
       </div>
     );

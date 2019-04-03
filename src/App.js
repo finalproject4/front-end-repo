@@ -65,7 +65,7 @@ class App extends Component {
   };
   onSignin = () => {
     this.setState({ user: getUser() });
-    this.changeActivePage("profile");
+    this.changeActivePage("home");
   };
   onSignout = () => {
     console.log("sigin out");

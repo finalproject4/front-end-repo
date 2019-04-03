@@ -92,11 +92,12 @@ class EditToolsForm extends Component {
                             value={this.state.formData.price}
                             onChange={this.handleChange}
                         />
-                    </div>
-
-                    <button className="btn btn-primary">
+                        <button className="btn btn-primary">
                         Update
                     </button>
+                    </div>
+
+                    
                 </form>
             </div>
         );

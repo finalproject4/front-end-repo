@@ -116,11 +116,12 @@ class EditHallsForm extends Component {
                             value={this.state.formData.section}
                             onChange={this.handleChange}
                         />
+                        <button className="btn btn-primary">
+                            Update
+                            </button>
                     </div>
 
-                    <button className="btn btn-primary">
-                        Update
-                    </button>
+                    
                 </form>
             </div>
         );

@@ -37,19 +37,18 @@ handleLoginRequest = user => {
 render() {
 return (
   
-
-    <div> 
-      <h1>Hello {this.state.my_profile.first_name}</h1>
-      <h3>First Name </h3> 
-      <h4>{this.state.my_profile.first_name} </h4>
-      <h3>Last Name </h3> 
-      <h4>{this.state.my_profile.last_name} </h4>
-      <h3>Email </h3> 
-      <h4>{this.state.my_profile.email} </h4>
-      <h3>Phone Number</h3> 
-      <h4>{this.state.my_profile.phone_number} </h4>
-      <button onClick={() => this.props.changeActiveToEditP("Edit-profile", this.state.my_profile.id)} className="btn btn-primary">Edit</button>
-
+<div className="d-flex justify-content-center">
+    
+      <div className="profile">
+        <img src="http://romanroadtrust.co.uk/wp-content/uploads/2018/01/profile-icon-png-898-300x300.png" className="profile-img"  />
+          <div className="p-body">
+          <h6>Hello {this.state.my_profile.first_name}</h6>
+          <p>Name: {this.state.my_profile.first_name} {this.state.my_profile.last_name} </p>
+           <p>Email: {this.state.my_profile.email} </p>
+           <p>Phone Number: {this.state.my_profile.phone_number} </p>
+           <button onClick={() => this.props.changeActiveToEditP("Edit-profile", this.state.my_profile.id)} className="btn btn-primary">Edit</button>
+       </div>
+       </div>           
     </div> 
 )}
 }
