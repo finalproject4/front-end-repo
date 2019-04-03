@@ -18,6 +18,7 @@ import HallForm from "./components/HallForm";
 import EditHallsForm from "./components/EditHallsForm";
 import apiUrl from "./apiConfig";
 import Home2 from "./components/Home2";
+import Landing from "./landig";
 
 
 
@@ -26,7 +27,7 @@ import Home2 from "./components/Home2";
 class App extends Component {
   state = {
     user: null,
-    activePage: "home",
+    activePage: "Landing",
     currentTool: null,
     currentHall: null,
     currentUser: null,
@@ -34,6 +35,30 @@ class App extends Component {
     tools: []
   };
 
+<<<<<<< HEAD
+=======
+  // handleLoginRequest = () => {
+  //   let url = `${apiUrl}/api/user/${getUser().id}/tools`;
+  //   console.log(getUser().id)
+  //   fetch(url, {
+  //     mode: "cors",
+  //     credentials: "include",
+  //     method: "GET",
+  //   })
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       console.log(data)
+  //       this.setState({ tools: data.user.Tools })
+
+  //     })
+
+  //     .catch(e => console.log(e));
+  // };
+  s = () => {
+    console.log(this.state.tools.length)
+    console.log(this.state.cart, "from the app")
+  }
+>>>>>>> design
   
 
   changeActiveToEdit = (activePage, id) => {
@@ -69,9 +94,18 @@ class App extends Component {
   onSignout = () => {
     console.log("sigin out");
     this.setState({ user: null });
+    this.changeActivePage("landing");
     Signout();
   };
 
+<<<<<<< HEAD
+=======
+  componentDidMount() {
+    // this.handleLoginRequest();
+   
+  }
+  
+>>>>>>> design
   render() {
     console.log(this.state.tools.length, "API")
 
@@ -81,7 +115,7 @@ class App extends Component {
     return (
       <div>
 
-       
+        
         <Nav
           user={user}
           changeActivePage={this.changeActivePage}
@@ -153,8 +187,16 @@ class App extends Component {
           ) : (
               ""
             )}
-            
+          {activePage === "Landing" ? (
+          <Landing changeActivePage={this.changeActivePage}/>
+             ) : (
+           ""
+         )}
         </div>
+<<<<<<< HEAD
+=======
+     
+>>>>>>> design
       </div>
     );
   }

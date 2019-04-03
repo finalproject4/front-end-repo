@@ -51,7 +51,7 @@ class SignupForm extends Component {
   render() {
     return (
       <div className="pt-5 mt-5">
-        <h1>PLEASE SIGNUP</h1>
+        <h1> JOIN US! </h1>
         {this.state.err ? (
           <div className="alert alert-warning"> {this.state.err} </div>
         ) : (
@@ -79,8 +79,9 @@ class SignupForm extends Component {
               className="form-control"
               onChange={this.handleChange}
             />
+           
 
-            <label>email </label>
+            <label>Email </label>
             <input
               name="email"
               className="form-control"

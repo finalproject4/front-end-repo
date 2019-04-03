@@ -48,7 +48,7 @@ return (
       <h4>{this.state.my_profile.email} </h4>
       <h3>Phone Number</h3> 
       <h4>{this.state.my_profile.phone_number} </h4>
-      <button onClick={() => this.props.changeActiveToEditP("Edit-profile", this.state.my_profile.id)} className="btn btn-primary mr-3">Edit</button>
+      <button onClick={() => this.props.changeActiveToEditP("Edit-profile", this.state.my_profile.id)} className="btn btn-primary">Edit</button>
 
     </div> 
 )}

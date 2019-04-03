@@ -236,18 +236,12 @@ handleReserveRequest = (toolID) => {
       },
       body: JSON.stringify(this.state.formData)
     })
-<<<<<<< HEAD
-      .then(res => res.json())
-      .then(data => this.updateButton(toolID))
-     
-=======
       .then(response => response.json())
       .then(data => {
         console.log(data)
         this.setState({ tools: data.tools })
       })
 
->>>>>>> edit
       .catch(e => console.log(e));
   // this.updateButton()
   };
@@ -313,7 +307,7 @@ handleReserveHRequest = (hallID) => {
           <p className="card-text">Section: {halls.section}</p>
           <p className="card-text">Size: {halls.size}</p>
           <form action="/action_page.php">
-          date:
+          Date:
           <input type="date" name="date" onChange={this.handleChangeDate}/>
           </form>
           <button className="btn btn-primary" onClick={(e) => this.getResH(halls.id)}>Reserve </button>

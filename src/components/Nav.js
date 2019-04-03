@@ -227,7 +227,7 @@ const Nav = ({ user, changeActivePage, onSignout }) => (
 
     <div className="navbar-brand"></div>
 <nav className="navbar navbar-light bg-light">
-    <img src={image} width="180" height="100" className="d inline-block align-top" alt="img"/>
+    <img src={image} width="180" height="70" className="d inline-block align-top" alt="img"/>
 </nav>
     <button
       className="navbar-toggler"

@@ -82,18 +82,18 @@ class MyTools extends Component {
     const tools = this.state.tools.map(tool => {
       return (
         <div className="card">
-          <img src=".." className="card-img-top" alt="..." />
+          <img src="https://static.tildacdn.com/tild3166-6166-4965-b466-396633616232/AllEquipmentHire1e1459197308294.jpg" className="card-img-top" alt="..." />
           <div className="card-body">
             <h5 className="card-title">{tool.type}</h5>
             <p className="card-text">Quantity: {tool.quantity}</p>
             <p className="card-text">Price: {tool.price}</p>
-            <button onClick={() => this.props.changeActiveToEdit("Edit-Tool", tool.id)} className="btn btn-primary mr-3">Edit</button>
+            <button onClick={() => this.props.changeActiveToEdit("Edit-Tool", tool.id)} className="btn btn-primary">Edit</button>
             <button onClick={() => this.delete(tool.id)} className="btn btn-primary">Delete</button>
           </div>
         </div>
       );
     });
-    return <div className="card-deck">{tools}</div>;
+    return <div >{tools}</div>;
 
 
 
