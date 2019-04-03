@@ -50,7 +50,6 @@ class Landing extends Component {
         return (
             <div className="notuse">
                 <img class="mySlides" id="c" src={this.slides[this.state.activeSlideIndex]}/>
-                <div id="border"></div>
            
                 <p className="paragraph">   لا تشيل هم <span>مناسبتك!</span> رتبها معنا </p>
         </div> )

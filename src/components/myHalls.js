@@ -90,7 +90,7 @@ class MyHalls extends Component {
         </div>
       );
     });
-    return <div className="card-deck">{halls}</div>;
+    return <div>{halls}</div>;
 
 
 

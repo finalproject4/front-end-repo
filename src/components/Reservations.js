@@ -142,14 +142,13 @@ class Reservations extends Component {
         const tools = this.state.tools.map(tools => {
             return (
                 <div className="card">
-                <img src="https://cdn2.iconfinder.com/data/icons/bar-and-pub-flaticon/64/music-party-food_and_restaurant-disc-tools-musical-tool-512.png" className="card-img-top" alt="..." />
+                <img src="https://static.tildacdn.com/tild3166-6166-4965-b466-396633616232/AllEquipmentHire1e1459197308294.jpg" className="card-img-top" alt="..." />
                 <div className="card-body">
                     <h5 className="card-title">{tools.type}</h5>
                     <p className="card-text">Quantity: {tools.quantity}</p>
                     <p className="card-text">Price: {tools.price}</p>
 
                     <form action="/action_page.php">
-                    date:
                     <input type="date" name="date" onChange={this.handleChangeDate}/>
                     </form>
 
@@ -160,7 +159,7 @@ class Reservations extends Component {
             );
         });
         return (
-            <div className="card-group">{tools}</div>
+            <div>{tools}</div>
         )
     }
 
