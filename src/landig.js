@@ -52,6 +52,8 @@ class Landing extends Component {
                 <img class="mySlides" id="c" src={this.slides[this.state.activeSlideIndex]}/>
            
                 <p className="paragraph">   لا تشيل هم <span>مناسبتك!</span> رتبها معنا </p>
+
+                <small className="s"> &copy; All the way from Sharqiyah with Saja , 2019</small>
         </div> )
     }
 }
