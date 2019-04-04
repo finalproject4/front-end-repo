@@ -19,7 +19,7 @@ import EditHallsForm from "./components/EditHallsForm";
 import apiUrl from "./apiConfig";
 import Home2 from "./components/Home2";
 import Landing from "./landig";
-
+var moment = require('moment')
 
 
 
@@ -161,6 +161,9 @@ class App extends Component {
            ""
          )}
         </div>
+                <h1 className="time">{moment().format('h:mm A ')}</h1>
+                <h1 className="date">{moment().format('MM-DD')  }</h1>
+        <small className="s"> &copy; All the way from Sharqiyah with Saja , 2019</small>
       </div>
     );
   }

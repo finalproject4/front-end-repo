@@ -225,3 +225,29 @@ input {
   box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
   width: 190px;
 }
+
+.s{
+  position: absolute;
+  left:460px;
+  bottom: 15px;
+}
+
+.date{
+position: absolute;
+top:48px;
+right: 30px;
+font-size: 20px;
+color: rgb(87, 170, 149)
+}
+
+.time{
+  position: absolute;
+  top:23px;
+  right: 30px;
+  font-size: 20px;
+  color: rgb(87, 170, 149)
+}
+
+.nav-link{
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}

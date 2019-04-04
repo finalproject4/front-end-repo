@@ -147,7 +147,7 @@ class HReservations extends Component {
     render() {
         const halls = this.state.halls.map(halls => {
             return (
-                <div className="card">
+                <div className="card m-3">
                     <img src="https://imagesawe.s3.amazonaws.com/listing/2019/01/31/al_faisaliah_hotel_1.jpg" className="card-img-top" alt="..." />
                     <div className="card-body">
                     <h5 className="card-title">{halls.name}</h5>
@@ -165,7 +165,7 @@ class HReservations extends Component {
             );
         });
         return (
-                <div>{halls}</div>
+                <div className="d-flex">{halls}</div>
         )
     }
 
