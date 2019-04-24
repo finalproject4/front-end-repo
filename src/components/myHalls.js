@@ -75,6 +75,7 @@ class MyHalls extends Component {
     console.log(this.state.halls.length)
     const halls = this.state.halls.map(hall => {
       return (
+        <div className="col-sm-4">
         <div className="card">
           <img src="https://imagesawe.s3.amazonaws.com/listing/2019/01/31/al_faisaliah_hotel_1.jpg" className="card-img-top" alt="..." />
           <div className="card-body">
@@ -88,9 +89,10 @@ class MyHalls extends Component {
             <button onClick={() => this.delete(hall.id)} className="btn btn-primary">Delete</button>
           </div>
         </div>
+        </div>
       );
     });
-    return <div>{halls}</div>;
+    return <div className="row">{halls}</div>;
 
 
 
