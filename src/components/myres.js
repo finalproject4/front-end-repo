@@ -36,9 +36,15 @@ class MyRes extends Component {
             method: "GET",
         })
             .then(response => response.json())
+            
             .then(data => {
                 console.log(data.user, "resC")
-                this.setState({ reservationsC: data.user })
+                const filterdData = data.user.filter(tool => {
+                    if(tool.reservations.length !== 0) {
+                        return tool
+                    }
+                })
+                this.setState({ reservationsC: filterdData })
             })
 
             .catch(e => console.log(e));
@@ -53,7 +59,12 @@ class MyRes extends Component {
             .then(response => response.json())
             .then(data => {
                 console.log(data.user, "resC")
-                this.setState({ hreservationsC: data.user })
+                const filterdData = data.user.filter(hall => {
+                    if(hall.hreservations.length !== 0) {
+                        return hall
+                    }
+                })
+                this.setState({ hreservationsC: filterdData })
             })
 
             .catch(e => console.log(e));
@@ -92,7 +103,7 @@ class MyRes extends Component {
            return (
             <div className="mt-4">
             <h4>Client Hall Reservation</h4>
-            <div className="card m-3">
+            <div className="col-sm-4 card m-3">
                 <img src="https://imagesawe.s3.amazonaws.com/listing/2019/01/31/al_faisaliah_hotel_1.jpg" className="card-img-top" alt="..." />
                 <div className="card-body">
                 <h5 className="card-title">{r.name}</h5>
@@ -114,7 +125,7 @@ class MyRes extends Component {
                 return <li>{ree}</li>
             })
            return (
-                  <div className="mt-4">
+                  <div className="col-sm-4 mt-4">
                 <h4>Client Tool Reservation</h4>
                 <div className="card m-3">
                 <img src="https://static.tildacdn.com/tild3166-6166-4965-b466-396633616232/AllEquipmentHire1e1459197308294.jpg" className="card-img-top" alt="..." />
@@ -134,7 +145,7 @@ class MyRes extends Component {
                 return <li>{date.date.split('T')[0]}</li>
             })
             return (
-                <div className="mt-4">
+                <div className="col-sm-4 mt-4">
                 <h4>Your Tool Reservation</h4>
                 <div className="card m-3">
                 <img src="https://static.tildacdn.com/tild3166-6166-4965-b466-396633616232/AllEquipmentHire1e1459197308294.jpg" className="card-img-top" alt="..." />
@@ -153,7 +164,7 @@ class MyRes extends Component {
                 return <li>{date.date.split('T')[0]}</li>
             })
             return (
-                <div className="mt-4">
+                <div className="col-sm-4 mt-4">
                 <h4>Your Hall Reservation</h4>
                 <div className="card m-3">
                     <img src="https://imagesawe.s3.amazonaws.com/listing/2019/01/31/al_faisaliah_hotel_1.jpg" className="card-img-top" alt="..." />
@@ -172,7 +183,8 @@ class MyRes extends Component {
           
             );
         }); 
-        return <div className="d-flex justify-content-center mt-5">
+        return <div className="row">
+        
         {reservations}
         {hreservations}
         {reservationsC}

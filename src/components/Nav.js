@@ -2,7 +2,7 @@ import React from "react";
 import apiUrl from "../apiConfig";
 import { getUser } from "../services/AuthService";
 import image from "./../image/IMG_1094.png";
-// import {getLingth} from "./"
+var moment = require('moment')
 
 class AuthenticatedOptions extends React.Component {
   state = {
@@ -145,63 +145,14 @@ class AuthenticatedOptions extends React.Component {
         <li className="nav-item" onClick={() => this.props.changeActivePage("profile")} >
         <div className="nav-link">Profile</div>
       </li>
+      <p className="time">{moment().format('h:mm A ')}</p>
+      <p className="date">{moment().format('MM-DD')  }</p>
       
     </React.Fragment>
     )
   }
 }
-//   const authenticatedOptions = (changeActivePage, onSignout) => (
-//   <React.Fragment>
-//     <li
-//       className="nav-item"
-//       onClick={() => changeActivePage("change-password")}
-//     >
-//       <div className="nav-link">Change Password</div>
-//     </li>
-//     <li className="nav-item" onClick={() => onSignout()}>
-//       <div className="nav-link">Sign Out</div>
-//     </li>
-//     <li
-//       className="nav-item"
-//       onClick={() => changeActivePage("Add-Tool")}
-//     >
-//       <div className="nav-link">Add Tool</div>
-//     </li>
-//     <li
-//       className="nav-item"
-//       onClick={() => changeActivePage("my-tools")}
-//     >
-//       <div className="nav-link">My Tools</div>
-//       {/* <div className="nav-link">{this.props.changeCart}</div> */}
-//     </li>
-//     <li
-//       className="nav-item"
-//       onClick={() => changeActivePage("add-Hall")}
-//     >
-//       <div className="nav-link">Add Hall</div>
-//     </li>
-  
-//     <li
-//       className="nav-item"
-//       onClick={() => changeActivePage("my-halls")}
-//     >
-//       <div className="nav-link">My Halls</div>
-//     </li>
-//     <li
-//       className="nav-item"
-//       onClick={() => changeActivePage("my-res")}
-//     >
-//       <div className="nav-link">My Reservations</div>
-//     </li>
-     
-      
-//       <li className="nav-item" onClick={() => changeActivePage("profile")} >
-//       <div className="nav-link">Profile</div>
-//     </li>
-    
-    
-//   </React.Fragment>
-// );
+
 
 const unauthenticatedOptions = changeActivePage => (
   <React.Fragment>

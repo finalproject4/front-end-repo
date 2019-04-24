@@ -141,6 +141,7 @@ class Reservations extends Component {
         
         const tools = this.state.tools.map(tools => {
             return (
+                <div className="col-sm-4">
                 <div className="card m-3">
                 <img src="https://static.tildacdn.com/tild3166-6166-4965-b466-396633616232/AllEquipmentHire1e1459197308294.jpg" className="card-img-top" alt="..." />
                 <div className="card-body">
@@ -156,10 +157,11 @@ class Reservations extends Component {
                 <button className="btn btn-primary" onClick={ () =>this.getRes(tools.id)}> Reserve</button>
                 </div>
                 </div>
+                </div>
             );
         });
         return (
-            <div className="d-flex">{tools}</div>
+            <div className="row">{tools}</div>
         )
     }
 
