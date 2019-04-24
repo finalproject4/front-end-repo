@@ -81,6 +81,7 @@ class MyTools extends Component {
     // this.props.changeCart(this.state.tools.length)
     const tools = this.state.tools.map(tool => {
       return (
+        <div className="col-sm-4">
         <div className="card">
           <img src="https://static.tildacdn.com/tild3166-6166-4965-b466-396633616232/AllEquipmentHire1e1459197308294.jpg" className="card-img-top" alt="..." />
           <div className="card-body">
@@ -91,9 +92,10 @@ class MyTools extends Component {
             <button onClick={() => this.delete(tool.id)} className="btn btn-primary">Delete</button>
           </div>
         </div>
+        </div>
       );
     });
-    return <div >{tools}</div>;
+    return <div className="row mt-5">{tools}</div>;
 
 
 

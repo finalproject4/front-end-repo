@@ -147,6 +147,7 @@ class HReservations extends Component {
     render() {
         const halls = this.state.halls.map(halls => {
             return (
+                <div className="col-sm-4">
                 <div className="card m-3">
                     <img src="https://imagesawe.s3.amazonaws.com/listing/2019/01/31/al_faisaliah_hotel_1.jpg" className="card-img-top" alt="..." />
                     <div className="card-body">
@@ -162,10 +163,11 @@ class HReservations extends Component {
                     <button className="btn btn-primary" onClick={(e) => this.getResH(halls.id)}>Reserve </button>
                     </div>
                 </div>
+                </div>
             );
         });
         return (
-                <div className="d-flex">{halls}</div>
+                <div className="row">{halls}</div>
         )
     }
 

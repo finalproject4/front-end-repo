@@ -161,8 +161,8 @@ class App extends Component {
            ""
          )}
         </div>
-                <h1 className="time">{moment().format('h:mm A ')}</h1>
-                <h1 className="date">{moment().format('MM-DD')  }</h1>
+                {/* <h1 className="time">{moment().format('h:mm A ')}</h1>
+                <h1 className="date">{moment().format('MM-DD')  }</h1> */}
       
       </div>
     );
