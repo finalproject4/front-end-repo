@@ -17,7 +17,7 @@ We have two kind of users: Customer and Provider,customer will only allow to mak
 
 
 ## `Team Members:👥`
-1.[Hala ALMaimoni](https://github.com/hala-almaimon)<br>
+1.[Hala ALMaimoni](https://github.com/hala-almaimoni)<br>
 2.[Abdulmohsin AlSharhan](https://github.com/Abdulmohsin1994)<br>
 3.[Anfal ALjaferi](https://github.com/anfaljay)<br>
 4.[Saja ALGadhi]( https://github.com/sajaalgadhi)
